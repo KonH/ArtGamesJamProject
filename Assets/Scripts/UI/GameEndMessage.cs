@@ -7,4 +7,5 @@ using UnityEngine;
 public class GameEndMessage {
 	public Resource Resource;
 	public string Message;
+	public string AchievementMessage;
 }

@@ -140,8 +140,14 @@ public class GameState : MonoBehaviour {
 	}
 
 	void OnGameEnd(Resource resource) {
-		Events.Fire(new Game_End(resource));
+		var save = Save.GetNode<GameSave>();
+		var hasEnding = save.Endings.Contains(resource.Name);
+		Events.Fire(new Game_End(resource, !hasEnding));
 		SaveResult(Turn);
+		if ( !hasEnding ) {
+			save.Endings.Add(resource.Name);
+			Save.SaveNode(save);
+		}
 	}
 
 	void SaveResult(int turn) {

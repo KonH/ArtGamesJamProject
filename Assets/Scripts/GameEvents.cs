@@ -34,9 +34,11 @@ public struct Game_Start {}
 
 public struct Game_End {
 	public Resource Resource;
+	public bool FirstTime;
 
-	public Game_End(Resource resource) {
+	public Game_End(Resource resource, bool firstTime) {
 		Resource = resource;
+		FirstTime = firstTime;
 	}
 }
 

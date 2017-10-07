@@ -8,6 +8,9 @@ using UDBase.Controllers.UserSystem;
 
 public class MenuUI : MonoBehaviour {
 	public Text BestResult;
+	public Text AchievementCounter;
+
+	public ResourceSetup Resources;
 
 	void Start() {
 		UpdateResult();
@@ -16,6 +19,7 @@ public class MenuUI : MonoBehaviour {
 	void UpdateResult() {
 		var save = Save.GetNode<GameSave>();
 		BestResult.text = save.BestResult.ToString();
+		AchievementCounter.text = string.Format("{0}/{1}", save.Endings.Count, Resources.Resources.Count);
 	}
 
 	public void OnPlay() {

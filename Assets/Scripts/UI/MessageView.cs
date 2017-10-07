@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UDBase.Controllers.EventSystem;
+using UDBase.Controllers.LogSystem;
 
 public class MessageView : MonoBehaviour {
 	
@@ -20,11 +21,12 @@ public class MessageView : MonoBehaviour {
 	public GameEndMessageSetup EndSetup;
 	public Text Text;
 	public List<CaseControl> Cases;
+	public float MinDelay;
 	public float Delay;
 
 	List<CaseSetup> _emptyCases = new List<CaseSetup>();
 	bool _autoComplete;
-	Action _delayAction;
+	Queue<Action> _delayActions = new Queue<Action>();
 	float _delay;
 
 	void Awake() {
@@ -36,11 +38,15 @@ public class MessageView : MonoBehaviour {
 	void Update() {
 		if ( _autoComplete ) {
 			var force = Input.anyKey;
-			if ( ( _delay > Delay ) || force ) {
-				if ( _delayAction != null ) {
-					_delayAction();
-					_delayAction = null;
-					_autoComplete = false;
+			if ( ( _delay > Delay ) || ( force && (_delay > MinDelay) ) ) {
+				if ( _delayActions.Count > 0 ) {
+					var action = _delayActions.Dequeue();
+					Log.Message("ExecAutoComplete", LogTags.State);
+					action();
+					if ( _delayActions.Count == 0 ) {
+						_autoComplete = false;
+						Log.Message("ResetAutoComplete", LogTags.State);
+					}
 					_delay = 0.0f;
 				}
 			} else {
@@ -61,12 +67,23 @@ public class MessageView : MonoBehaviour {
 	void OnGameEnd(Game_End e) {
 		foreach ( var endMessage in EndSetup.Messages ) {
 			if ( endMessage.Resource == e.Resource ) {
-				var cases = new List<CaseSetup>();
-				cases.Add(new CaseSetup("Restart", () => Events.Fire(new User_Restart())));
-				cases.Add(new CaseSetup("Menu", () => Events.Fire(new User_Menu())));
-				SetMessage(endMessage.Message, cases, false);
+				if ( e.FirstTime ) {
+					var achieveMessage = endMessage.AchievementMessage;
+					SetMessage(endMessage.Message, _emptyCases, true);
+					_delayActions.Enqueue(() => RaiseEndGameMessage(achieveMessage));
+				} else {
+					RaiseEndGameMessage(endMessage.Message);
+				}
 			}
 		}
+	}
+
+	void RaiseEndGameMessage(string message) {
+		Log.Message("RaiseEndGameMessage", LogTags.State);
+		var cases = new List<CaseSetup>();
+		cases.Add(new CaseSetup("Restart", () => Events.Fire(new User_Restart())));
+		cases.Add(new CaseSetup("Menu", () => Events.Fire(new User_Menu())));
+		SetMessage(message, cases, false);
 	}
 
 	void OnNewEvent(Event_New e) {
@@ -85,7 +102,7 @@ public class MessageView : MonoBehaviour {
 			ClearMessage();
 			if ( !string.IsNullOrEmpty(message) ) {
 				SetMessage(message, _emptyCases, true);
-				_delayAction = action;
+				_delayActions.Enqueue(action);
 			} else {
 				action();
 			}
@@ -93,6 +110,13 @@ public class MessageView : MonoBehaviour {
 	}
 
 	void SetMessage(string text, List<CaseSetup> cases, bool autoComplete) {
+		Log.MessageFormat("SetMessage: '{0}', {1}, auto: {2}", LogTags.State, text, cases.Count, autoComplete);
+		if ( !autoComplete && _autoComplete && ( _delayActions.Count > 0 ) ) {
+			Log.Message("Enque message", LogTags.State);
+			_delayActions.Enqueue(() => SetMessage(text, cases, autoComplete));
+			return;
+		}
+		_delay = 0.0f;
 		_autoComplete = autoComplete;
 		Text.text = text;
 		for ( var i = 0; i < Cases.Count; i++ ) {
