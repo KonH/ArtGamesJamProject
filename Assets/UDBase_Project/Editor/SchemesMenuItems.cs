@@ -7,9 +7,16 @@ namespace UDBase.EditorTools {
 		[MenuItem("UDBase/Schemes/Default")]
 		static void SwitchToScheme_Default() {
 			SchemesTool.SwitchScheme("Default");
-		}		[MenuItem("UDBase/Schemes/DevScheme")]
+		}
+
+		[MenuItem("UDBase/Schemes/DevScheme")]
 		static void SwitchToScheme_DevScheme() {
 			SchemesTool.SwitchScheme("DevScheme");
+		}	
+
+		[MenuItem("UDBase/Schemes/ReleaseScheme")]
+		static void SwitchToScheme_ReleaseScheme() {
+			SchemesTool.SwitchScheme("ReleaseScheme");
 		}
 	}
 }
