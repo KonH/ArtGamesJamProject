@@ -62,7 +62,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1655614983522760
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   - Resource: {fileID: 114095637835361528, guid: 5aee6980d56874648a1d30f098502f19,
       type: 2}
     Value: -1
-  Level: 0
+  Level: 1
   LevelItems:
   - {fileID: 0}
   - {fileID: 1456377699430582}

@@ -15,6 +15,7 @@ using UDBase.Utils;
 public class GameState : MonoBehaviour {
 	public int StartCount;
 	public int StartLevel;
+	public int MaxResource;
 	public int Turn;
 	public bool IsEnded;
 	public ResourceSetup Resources;
@@ -212,6 +213,7 @@ public class GameState : MonoBehaviour {
 		foreach ( var holder in Holders ) {
 			if ( holder.Resource == resource ) {
 				holder.Count += value;
+				holder.Count = Mathf.Min(holder.Count, MaxResource);
 				Events.Fire(new Resource_Update(holder));
 			}
 		}
