@@ -30,6 +30,8 @@ public struct Region_Update {
 	}
 }
 
+public struct Game_Start {}
+
 public struct Game_End {
 	public Resource Resource;
 

@@ -53,5 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Click:
     Id: {fileID: 114247173682642056, guid: d2d9ab94c806e4151935eb1aed499f2a, type: 2}
+  StartSound:
+    Id: {fileID: 114901729418539472, guid: d2d9ab94c806e4151935eb1aed499f2a, type: 2}
   End:
     Id: {fileID: 114181924662799790, guid: d2d9ab94c806e4151935eb1aed499f2a, type: 2}

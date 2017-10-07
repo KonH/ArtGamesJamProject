@@ -14,6 +14,8 @@ MonoBehaviour:
   Items:
   - {fileID: 114247173682642056}
   - {fileID: 114181924662799790}
+  - {fileID: 114901729418539472}
+  - {fileID: 114480499079437074}
 --- !u!114 &114181924662799790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43,6 +45,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LoadType: 1
   Asset: {fileID: 8300000, guid: c4b732f4992794a4dba7d1803abfdcda, type: 3}
+  Type: UnityEngine.AudioClip
+  BundleName: 
+  AssetName: 
+--- !u!114 &114480499079437074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e00326f364c4280a4de132f44ade5b, type: 3}
+  m_Name: music_loop
+  m_EditorClassIdentifier: 
+  LoadType: 1
+  Asset: {fileID: 8300000, guid: da5db73b15411471892a8ace85864b85, type: 3}
+  Type: UnityEngine.AudioClip
+  BundleName: 
+  AssetName: 
+--- !u!114 &114901729418539472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e00326f364c4280a4de132f44ade5b, type: 3}
+  m_Name: game-start
+  m_EditorClassIdentifier: 
+  LoadType: 1
+  Asset: {fileID: 8300000, guid: 51f2cf4ce2865409d8ebe331ef97cbf5, type: 3}
   Type: UnityEngine.AudioClip
   BundleName: 
   AssetName: 

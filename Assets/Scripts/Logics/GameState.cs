@@ -9,6 +9,7 @@ using UDBase.Controllers.SaveSystem;
 using UDBase.Controllers.LeaderboardSystem;
 using UDBase.Controllers.UserSystem;
 using UDBase.Controllers.LogSystem;
+using UDBase.Controllers.MusicSystem;
 using UDBase.Utils;
 
 public class GameState : MonoBehaviour {
@@ -33,6 +34,14 @@ public class GameState : MonoBehaviour {
 		Events.Unsubscribe<User_Restart>(OnUserRestart);
 		Events.Unsubscribe<User_Case>(OnUserCase);
 		Events.Unsubscribe<User_Menu>(OnUserMenu);
+	}
+
+	void Start() {
+		InitHolders();
+		InitRegions();
+		OnNewTurn();
+		UpdateEvent();
+		Events.Fire(new Game_Start());
 	}
 
 	void OnUserRestart(User_Restart e) {
@@ -97,13 +106,6 @@ public class GameState : MonoBehaviour {
 		foreach ( var holder in Holders ) {
 			UpdateResource(holder.Resource, 0);
 		}
-	}
-
-	void Start() {
-		InitHolders();
-		InitRegions();
-		OnNewTurn();
-		UpdateEvent();
 	}
 
 	void OnNewTurn() {

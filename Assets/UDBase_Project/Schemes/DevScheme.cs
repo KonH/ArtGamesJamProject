@@ -10,6 +10,7 @@ using UDBase.Controllers.UserSystem;
 using UDBase.Controllers.LeaderboardSystem;
 using UDBase.Controllers.ContentSystem;
 using UDBase.Controllers.SoundSystem;
+using UDBase.Controllers.MusicSystem;
 using UDBase.Utils;
 
 public class ProjectScheme : Scheme {
@@ -27,6 +28,7 @@ public class ProjectScheme : Scheme {
 			new WebLeaderboard("https://konhit.xyz/lbservice/", "cityBuilder", "1.0.0", "cityBuilder", "cityBuilder"));
 		AddController<Content>(new DirectContentController());
 		AddController<Sound>(new SoundController());
+		AddController<Music>(new MusicController());
 
 		UnityHelper.LoadPersistant<SoundBinding>("SoundBinding");
 	}
