@@ -25,6 +25,7 @@ public class MessageView : MonoBehaviour {
 
 	void Awake() {
 		Events.Subscribe<Game_End>(this, OnGameEnd);
+		Events.Subscribe<Event_New>(this, OnNewEvent);
 		ClearMessage();
 	}
 
@@ -34,6 +35,7 @@ public class MessageView : MonoBehaviour {
 
 	void OnDestroy() {
 		Events.Unsubscribe<Game_End>(OnGameEnd);
+		Events.Unsubscribe<Event_New>(OnNewEvent);
 	}
 
 	void OnGameEnd(Game_End e) {
@@ -46,6 +48,15 @@ public class MessageView : MonoBehaviour {
 		}
 	}
 
+	void OnNewEvent(Event_New e) {
+		var ev = e.Event;
+		var cases = new List<CaseSetup>();
+		foreach ( var cs in ev.Cases ) {
+			var selection = cs;
+			cases.Add(new CaseSetup(cs.Message, () => Events.Fire(new User_Case(selection))));
+		}
+		SetMessage(ev.Message, cases);
+	}
 	Action WrapSelect(Action action) {
 		return () => {
 			ClearMessage();

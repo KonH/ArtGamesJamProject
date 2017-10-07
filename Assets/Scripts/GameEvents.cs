@@ -39,3 +39,19 @@ public struct Game_End {
 }
 
 public struct User_Restart {}
+
+public struct Event_New {
+	public Event Event;
+
+	public Event_New(Event ev) {
+		Event = ev;
+	}
+}
+
+public struct User_Case {
+	public EventCase Case;
+
+	public User_Case(EventCase cs) {
+		Case = cs;
+	}
+}

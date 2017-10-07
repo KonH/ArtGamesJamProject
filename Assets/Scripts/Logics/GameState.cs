@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UDBase.Controllers.EventSystem;
 using UDBase.Controllers.SceneSystem;
+using UDBase.Utils;
 
 public class GameState : MonoBehaviour {
 	public int StartCount;
@@ -17,11 +18,13 @@ public class GameState : MonoBehaviour {
 	void Awake() {
 		Events.Subscribe<Region_Update>(this, OnRegionUpdate);
 		Events.Subscribe<User_Restart>(this, OnUserRestart);
+		Events.Subscribe<User_Case>(this, OnUserCase);
 	}
 
 	void OnDestroy() {
 		Events.Unsubscribe<Region_Update>(OnRegionUpdate);
 		Events.Unsubscribe<User_Restart>(OnUserRestart);
+		Events.Unsubscribe<User_Case>(OnUserCase);
 	}
 
 	void OnUserRestart(User_Restart e) {
@@ -30,6 +33,33 @@ public class GameState : MonoBehaviour {
 
 	void OnRegionUpdate(Region_Update e) {
 		RecalculateResources();
+	}
+
+	void OnUserCase(User_Case e) {
+		var cs = e.Case;
+		ApplyCase(cs);
+		NextTurn();
+	}
+
+	void ApplyCase(EventCase cs) {
+		foreach ( var resChange in cs.Resources ) {
+			UpdateResource(resChange.Resource, resChange.Value);
+		}
+		foreach ( var regChange in cs.Regions ) {
+			UpdateRegion(regChange.Name, regChange.UpDown);
+		}
+	}
+
+	void UpdateRegion(string regName, bool upDown) {
+		foreach ( var reg in Regions ) {
+			if ( reg.Name == regName ) {
+				if ( upDown ) {
+					reg.TryLevelUp();
+				} else {
+					reg.TryLevelDown();
+				}
+			}
+		}
 	}
 
 	ResourceHolder GetHolder(Resource resource) {
@@ -60,6 +90,7 @@ public class GameState : MonoBehaviour {
 		InitHolders();
 		InitRegions();
 		OnNewTurn();
+		UpdateEvent();
 	}
 
 	void OnNewTurn() {
@@ -78,6 +109,9 @@ public class GameState : MonoBehaviour {
 		Turn++;
 		OnNewTurn();
 		IsEnded = CheckGameEnd();
+		if ( !IsEnded ) {
+			UpdateEvent();
+		}
 	}
 
 	bool CheckGameEnd() {
@@ -88,6 +122,16 @@ public class GameState : MonoBehaviour {
 			}
 		}
 		return false;
+	}
+
+	Event SelectEvent() {
+		// TODO: Checks and store
+		return RandomUtils.GetItem(GameEvents.Events);
+	}
+
+	void UpdateEvent() {
+		var newEvent = SelectEvent();
+		Events.Fire(new Event_New(newEvent));
 	}
 
 	void UpdateResource(Resource resource, int value) {

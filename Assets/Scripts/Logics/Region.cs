@@ -4,6 +4,7 @@ using UnityEngine;
 using UDBase.Controllers.EventSystem;
 
 public class Region : MonoBehaviour {
+	public string Name;
 	public List<ResourceChange> Changes;
 	public int Level;
 	public List<GameObject> LevelItems;
