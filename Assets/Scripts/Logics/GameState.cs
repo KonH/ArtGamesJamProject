@@ -19,12 +19,14 @@ public class GameState : MonoBehaviour {
 		Events.Subscribe<Region_Update>(this, OnRegionUpdate);
 		Events.Subscribe<User_Restart>(this, OnUserRestart);
 		Events.Subscribe<User_Case>(this, OnUserCase);
+		Events.Subscribe<User_Menu>(this, OnUserMenu);
 	}
 
 	void OnDestroy() {
 		Events.Unsubscribe<Region_Update>(OnRegionUpdate);
 		Events.Unsubscribe<User_Restart>(OnUserRestart);
 		Events.Unsubscribe<User_Case>(OnUserCase);
+		Events.Unsubscribe<User_Menu>(OnUserMenu);
 	}
 
 	void OnUserRestart(User_Restart e) {
@@ -39,6 +41,10 @@ public class GameState : MonoBehaviour {
 		var cs = e.Case;
 		ApplyCase(cs);
 		NextTurn();
+	}
+
+	void OnUserMenu(User_Menu e) {
+		Scene.LoadSceneByName("Menu");
 	}
 
 	void ApplyCase(EventCase cs) {

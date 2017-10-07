@@ -55,3 +55,5 @@ public struct User_Case {
 		Case = cs;
 	}
 }
+
+public struct User_Menu {}

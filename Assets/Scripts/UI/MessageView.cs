@@ -43,6 +43,7 @@ public class MessageView : MonoBehaviour {
 			if ( endMessage.Resource == e.Resource ) {
 				var cases = new List<CaseSetup>();
 				cases.Add(new CaseSetup("Restart", () => Events.Fire(new User_Restart())));
+				cases.Add(new CaseSetup("Menu", () => Events.Fire(new User_Menu())));
 				SetMessage(endMessage.Message, cases);
 			}
 		}
