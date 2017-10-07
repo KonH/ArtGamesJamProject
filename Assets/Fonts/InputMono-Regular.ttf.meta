@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 5a8dbb45210f14bdd9ba0c181a0e184d
+timeCreated: 1507395233
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Input Mono
+  fontNames:
+  - Input Mono
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
