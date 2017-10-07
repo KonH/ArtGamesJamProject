@@ -17,7 +17,7 @@ public class MessageView : MonoBehaviour {
 		}	
 	}
 
-	public List<GameEndMessage> EndMessages;
+	public GameEndMessageSetup EndSetup;
 	public Text Text;
 	public List<CaseControl> Cases;
 
@@ -37,7 +37,7 @@ public class MessageView : MonoBehaviour {
 	}
 
 	void OnGameEnd(Game_End e) {
-		foreach ( var endMessage in EndMessages ) {
+		foreach ( var endMessage in EndSetup.Messages ) {
 			if ( endMessage.Resource == e.Resource ) {
 				var cases = new List<CaseSetup>();
 				cases.Add(new CaseSetup("Restart", () => Events.Fire(new User_Restart())));

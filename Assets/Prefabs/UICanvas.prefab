@@ -690,16 +690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed2df8571c51437aad0d7c42d8316d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndMessages:
-  - Resource: {fileID: 114095637835361528, guid: 5aee6980d56874648a1d30f098502f19,
-      type: 2}
-    Message: You failed by res A!
-  - Resource: {fileID: 114095637835361528, guid: b84c03b94af7c472eb3217c6985be720,
-      type: 2}
-    Message: You failed by res B!
-  - Resource: {fileID: 114095637835361528, guid: 819b2432bf0254652b4a55fb690fd975,
-      type: 2}
-    Message: You failed by res C!
+  EndSetup: {fileID: 114581696153125696, guid: f5dad7154fc644313b6f6da733901110, type: 2}
   Text: {fileID: 114715509858299692}
   Cases:
   - {fileID: 114282665074689752}
