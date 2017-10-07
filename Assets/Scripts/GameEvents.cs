@@ -37,3 +37,5 @@ public struct Game_End {
 		Resource = resource;
 	}
 }
+
+public struct User_Restart {}

@@ -3,26 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UDBase.Controllers.EventSystem;
+using UDBase.Controllers.SceneSystem;
 
 public class GameState : MonoBehaviour {
 	public int StartCount;
-
 	public int Turn;
-
 	public bool IsEnded;
-
 	public ResourceSetup Resources;
-
+	public EventSetup GameEvents;
 	public List<ResourceHolder> Holders;
-
 	public List<Region> Regions;
 
 	void Awake() {
 		Events.Subscribe<Region_Update>(this, OnRegionUpdate);
+		Events.Subscribe<User_Restart>(this, OnUserRestart);
 	}
 
 	void OnDestroy() {
 		Events.Unsubscribe<Region_Update>(OnRegionUpdate);
+		Events.Unsubscribe<User_Restart>(OnUserRestart);
+	}
+
+	void OnUserRestart(User_Restart e) {
+		Scene.ReloadScene();
 	}
 
 	void OnRegionUpdate(Region_Update e) {
