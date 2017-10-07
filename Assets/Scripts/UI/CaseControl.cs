@@ -10,7 +10,7 @@ public class CaseControl : MonoBehaviour {
 	Action _callback;
 
 	public void Init(string text, Action callback) {
-		Text.text = text;
+		Text.text = Localization.Localize(text);
 		_callback = callback;
 	}
 

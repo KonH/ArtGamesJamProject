@@ -81,8 +81,8 @@ public class MessageView : MonoBehaviour {
 	void RaiseEndGameMessage(string message) {
 		Log.Message("RaiseEndGameMessage", LogTags.State);
 		var cases = new List<CaseSetup>();
-		cases.Add(new CaseSetup("Restart", () => Events.Fire(new User_Restart())));
-		cases.Add(new CaseSetup("Menu", () => Events.Fire(new User_Menu())));
+		cases.Add(new CaseSetup("button_restart", () => Events.Fire(new User_Restart())));
+		cases.Add(new CaseSetup("button_menu", () => Events.Fire(new User_Menu())));
 		SetMessage(message, cases, false);
 	}
 
@@ -118,7 +118,7 @@ public class MessageView : MonoBehaviour {
 		}
 		_delay = 0.0f;
 		_autoComplete = autoComplete;
-		Text.text = text;
+		Text.text = Localization.Localize(text);
 		for ( var i = 0; i < Cases.Count; i++ ) {
 			Cases[i].gameObject.SetActive(i < cases.Count);
 			if ( i < cases.Count ) {

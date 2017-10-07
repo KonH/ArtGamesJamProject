@@ -1,0 +1,18 @@
+{
+	"text": {
+		"values_ru": {
+			"button_play": "Играть",
+			"button_leaders": "Топ игроков",
+			"button_credits": "Авторы",
+			"button_restart": "Перезапуск",
+			"button_menu": "Меню"
+		},
+		"values_en": {
+			"button_play": "Play",
+			"button_leaders": "Leaderboards",
+			"button_credits": "Credits",
+			"button_restart": "Restart",
+			"button_menu": "Menu"
+		}
+	}
+}

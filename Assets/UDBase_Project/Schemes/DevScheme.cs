@@ -11,6 +11,7 @@ using UDBase.Controllers.LeaderboardSystem;
 using UDBase.Controllers.ContentSystem;
 using UDBase.Controllers.SoundSystem;
 using UDBase.Controllers.MusicSystem;
+using UDBase.Controllers.ConfigSystem;
 using UDBase.Utils;
 
 public class ProjectScheme : Scheme {
@@ -29,6 +30,9 @@ public class ProjectScheme : Scheme {
 		AddController<Content>(new DirectContentController());
 		AddController<Sound>(new SoundController());
 		AddController<Music>(new MusicController());
+		var config = new FsJsonResourcesConfig();
+		config.AddNode<TextConfig>("text");
+		AddController<Config>(config);
 
 		UnityHelper.LoadPersistant<SoundBinding>("SoundBinding");
 	}

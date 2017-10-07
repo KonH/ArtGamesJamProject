@@ -9,4 +9,7 @@ public class GameSave {
 
 	[fsProperty("endings")]
 	public List<string> Endings = new List<string>();
+
+	[fsProperty("rus")]
+	public bool IsRussian;
 }
