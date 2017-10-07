@@ -54,7 +54,7 @@ public class MessageView : MonoBehaviour {
 		var cases = new List<CaseSetup>();
 		foreach ( var cs in ev.Cases ) {
 			var selection = cs;
-			cases.Add(new CaseSetup(cs.Message, () => Events.Fire(new User_Case(selection))));
+			cases.Add(new CaseSetup(cs.Message, () => Events.Fire(new User_Case(ev, selection))));
 		}
 		SetMessage(ev.Message, cases);
 	}

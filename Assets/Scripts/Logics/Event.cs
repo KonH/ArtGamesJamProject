@@ -5,4 +5,6 @@ using UnityEngine;
 public class Event : MonoBehaviour {
 	public string Message;
 	public List<EventCase> Cases;
+	public Event EventDepend;
+	public int CaseDepend;
 }

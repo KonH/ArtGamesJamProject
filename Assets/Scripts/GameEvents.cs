@@ -49,9 +49,11 @@ public struct Event_New {
 }
 
 public struct User_Case {
+	public Event Event;
 	public EventCase Case;
 
-	public User_Case(EventCase cs) {
+	public User_Case(Event ev, EventCase cs) {
+		Event = ev;
 		Case = cs;
 	}
 }

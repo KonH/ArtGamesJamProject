@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ using UDBase.Controllers.SceneSystem;
 using UDBase.Controllers.SaveSystem;
 using UDBase.Controllers.LeaderboardSystem;
 using UDBase.Controllers.UserSystem;
+using UDBase.Controllers.LogSystem;
 using UDBase.Utils;
 
 public class GameState : MonoBehaviour {
@@ -17,6 +19,7 @@ public class GameState : MonoBehaviour {
 	public EventSetup GameEvents;
 	public List<ResourceHolder> Holders;
 	public List<Region> Regions;
+	public List<EventHistory> DoneEvents;
 
 	void Awake() {
 		Events.Subscribe<Region_Update>(this, OnRegionUpdate);
@@ -41,8 +44,7 @@ public class GameState : MonoBehaviour {
 	}
 
 	void OnUserCase(User_Case e) {
-		var cs = e.Case;
-		ApplyCase(cs);
+		ApplyCase(e.Event, e.Case);
 		NextTurn();
 	}
 
@@ -50,13 +52,15 @@ public class GameState : MonoBehaviour {
 		Scene.LoadSceneByName("Menu");
 	}
 
-	void ApplyCase(EventCase cs) {
+	void ApplyCase(Event ev, EventCase cs) {
 		foreach ( var resChange in cs.Resources ) {
 			UpdateResource(resChange.Resource, resChange.Value);
 		}
 		foreach ( var regChange in cs.Regions ) {
 			UpdateRegion(regChange.Name, regChange.UpDown);
 		}
+		var csIndex = ev.Cases.IndexOf(cs);
+		DoneEvents.Add(new EventHistory(ev, csIndex));
 	}
 
 	void UpdateRegion(string regName, bool upDown) {
@@ -148,8 +152,45 @@ public class GameState : MonoBehaviour {
 	}
 
 	Event SelectEvent() {
-		// TODO: Checks and store
-		return RandomUtils.GetItem(GameEvents.Events);
+		var filterByDepend = GameEvents.Events.Where(e => IsDependSelected(e.EventDepend, e.CaseDepend)).ToList();
+		DebugEvents("FilterByDepend", filterByDepend);
+		var filterByUsage = FilterByUsage(filterByDepend);
+		DebugEvents("FilterByUsage", filterByUsage);
+		return RandomUtils.GetItem(filterByUsage.Count > 0 ? filterByUsage : filterByDepend);
+	}
+
+	List<Event> FilterByUsage(List<Event> input) {
+		var filterByUsage = new List<Event>();
+		foreach ( var ev in input ) {
+			var exists = false;
+			foreach ( var eh in DoneEvents ) {
+				if ( eh.Event == ev ) {
+					exists = true;
+					break;
+				}
+			}
+			if ( !exists ) {
+				filterByUsage.Add(ev);
+			}
+		}
+		return filterByUsage;
+	}
+
+	void DebugEvents(string logName, List<Event> events) {
+		if ( Log.IsActive() ) {
+			var evStr = logName + " (" + events.Count + "): ";
+			foreach ( var ev in events ) {
+				evStr += ev.name + "; ";
+			}
+			Log.Message(evStr, LogTags.State);
+		}
+	}
+
+	bool IsDependSelected(Event ev, int csIndex) {
+		if ( !ev ) {
+			return true;
+		}
+		return DoneEvents.Any(eh => (eh.Event == ev) && (eh.CaseIndex == csIndex));
 	}
 
 	void UpdateEvent() {
