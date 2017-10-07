@@ -13,5 +13,7 @@ public enum LogTags {
 	Leaderboard = 12,
 	Audio = 13,
 	Sound = 14,
-	State = 101
+	State = 101,
+	Localization = 102,
+	Messages = 103
 }

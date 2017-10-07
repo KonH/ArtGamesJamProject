@@ -7,7 +7,7 @@ using UDBase.Controllers.LogSystem;
 
 public static class Localization {
 	public static string Localize(string key) {
-		Log.MessageFormat("Localize: '{0}'", LogTags.State, key);
+		Log.MessageFormat("Localize: '{0}'", LogTags.Localization, key);
 		var save = Save.GetNode<GameSave>();
 		var textConfig = Config.GetNode<TextConfig>();
 		var collection = save.IsRussian ? textConfig.ValuesRu : textConfig.ValuesEn;
@@ -19,6 +19,7 @@ public static class Localization {
 	}
 
 	public static void SetLanguage(bool isRussian) {
+		Log.MessageFormat("SetLanguage: '{0}'", LogTags.Localization, isRussian);
 		var save = Save.GetNode<GameSave>();
 		save.IsRussian = isRussian;
 		Save.SaveNode(save);

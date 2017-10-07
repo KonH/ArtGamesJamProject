@@ -35,11 +35,11 @@ public class MessageView : MonoBehaviour {
 	void Next() {
 		if ( _queuedActions.Count > 0 ) {
 			var action = _queuedActions.Dequeue();
-			Log.Message("ExecContinue", LogTags.State);
+			Log.Message("ExecContinue", LogTags.Messages);
 			action();
 			if ( _queuedActions.Count == 0 ) {
 				_skipable = false;
-				Log.Message("ResetContinue", LogTags.State);
+				Log.Message("ResetContinue", LogTags.Messages);
 			}
 		}
 	}
@@ -68,7 +68,7 @@ public class MessageView : MonoBehaviour {
 	}
 
 	void RaiseEndGameMessage(string message) {
-		Log.Message("RaiseEndGameMessage", LogTags.State);
+		Log.Message("RaiseEndGameMessage", LogTags.Messages);
 		var cases = new List<CaseSetup>();
 		cases.Add(new CaseSetup("button_restart", () => Events.Fire(new User_Restart())));
 		cases.Add(new CaseSetup("button_menu", () => Events.Fire(new User_Menu())));
@@ -99,9 +99,9 @@ public class MessageView : MonoBehaviour {
 	}
 
 	void SetMessage(string text, List<CaseSetup> cases, bool skipable) {
-		Log.MessageFormat("SetMessage: '{0}', {1}, skipable: {2}", LogTags.State, text, cases.Count, skipable);
+		Log.MessageFormat("SetMessage: '{0}', {1}, skipable: {2}", LogTags.Messages, text, cases.Count, skipable);
 		if ( !skipable && _skipable && ( _queuedActions.Count > 0 ) ) {
-			Log.Message("Enque message", LogTags.State);
+			Log.Message("Enque message", LogTags.Messages);
 			_queuedActions.Enqueue(() => SetMessage(text, cases, skipable));
 			return;
 		}
