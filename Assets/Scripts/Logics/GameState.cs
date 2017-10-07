@@ -11,7 +11,7 @@ public class GameState : MonoBehaviour {
 
 	public bool IsEnded;
 
-	public List<Resource> Resources;
+	public ResourceSetup Resources;
 
 	public List<ResourceHolder> Holders;
 
@@ -97,7 +97,7 @@ public class GameState : MonoBehaviour {
 	}
 
 	void InitHolders() {
-		foreach ( var res in Resources ) {
+		foreach ( var res in Resources.Resources ) {
 			var holder = new ResourceHolder(res, StartCount);
 			Holders.Add(holder);
 			Events.Fire(new Resource_New(holder));
