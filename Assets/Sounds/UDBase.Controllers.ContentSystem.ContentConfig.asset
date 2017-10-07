@@ -13,6 +13,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Items:
   - {fileID: 114247173682642056}
+  - {fileID: 114181924662799790}
+--- !u!114 &114181924662799790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e00326f364c4280a4de132f44ade5b, type: 3}
+  m_Name: game_end
+  m_EditorClassIdentifier: 
+  LoadType: 1
+  Asset: {fileID: 8300000, guid: f58ece60f7bee4807acffdb347ee4f8b, type: 3}
+  Type: UnityEngine.AudioClip
+  BundleName: 
+  AssetName: 
 --- !u!114 &114247173682642056
 MonoBehaviour:
   m_ObjectHideFlags: 0

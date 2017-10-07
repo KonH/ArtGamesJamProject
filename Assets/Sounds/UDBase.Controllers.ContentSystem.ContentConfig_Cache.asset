@@ -14,3 +14,5 @@ MonoBehaviour:
   Items:
   - Id: {fileID: 114247173682642056, guid: d2d9ab94c806e4151935eb1aed499f2a, type: 2}
     Asset: {fileID: 8300000, guid: c4b732f4992794a4dba7d1803abfdcda, type: 3}
+  - Id: {fileID: 114181924662799790, guid: d2d9ab94c806e4151935eb1aed499f2a, type: 2}
+    Asset: {fileID: 8300000, guid: f58ece60f7bee4807acffdb347ee4f8b, type: 3}
