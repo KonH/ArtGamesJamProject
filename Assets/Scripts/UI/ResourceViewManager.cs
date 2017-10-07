@@ -23,7 +23,7 @@ public class ResourceViewManager : MonoBehaviour {
 		instance.SetActive(true);
 		var view = instance.GetComponent<ResourceView>();
 		Views.Add(view);
-		view.Init(e.Holder);
+		view.Init(e.Holder, e.MaxValue);
 		view.UpdateStatus(e.Holder);
 	}
 

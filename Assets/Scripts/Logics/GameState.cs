@@ -223,7 +223,7 @@ public class GameState : MonoBehaviour {
 		foreach ( var res in Resources.Resources ) {
 			var holder = new ResourceHolder(res, StartCount);
 			Holders.Add(holder);
-			Events.Fire(new Resource_New(holder));
+			Events.Fire(new Resource_New(holder, MaxResource));
 		}
 	}
 

@@ -6,9 +6,13 @@ using UnityEngine.UI;
 public class ResourceView : MonoBehaviour {
 	public ResourceHolder Owner;
 	public Text SampleText;
+	public Slider Slider;
 
-	public void Init(ResourceHolder holder) {
+	int _maxValue;
+
+	public void Init(ResourceHolder holder, int maxValue) {
 		Owner = holder;
+		_maxValue = maxValue;
 	}
 
 	public void UpdateStatus(ResourceHolder holder) {
@@ -19,7 +23,8 @@ public class ResourceView : MonoBehaviour {
 			} else if ( holder.Change < 0 ) {
 				changeValue = holder.Change.ToString();
 			}
-			SampleText.text = string.Format("{0}: {1} {2}", holder.Resource.Name, holder.Count, changeValue); 
+			SampleText.text = string.Format("{0}: {1} {2}", holder.Resource.Name, holder.Count, changeValue);
+			Slider.value = (float)holder.Count / _maxValue;
 		}
 	}
 }

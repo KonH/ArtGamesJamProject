@@ -1,8 +1,10 @@
 ﻿public struct Resource_New {
 	public ResourceHolder Holder;
+	public int MaxValue;
 
-	public Resource_New(ResourceHolder holder) {
+	public Resource_New(ResourceHolder holder, int maxValue) {
 		Holder = holder;
+		MaxValue = maxValue;
 	}
 }
 
