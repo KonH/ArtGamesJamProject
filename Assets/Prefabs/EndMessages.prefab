@@ -55,9 +55,12 @@ MonoBehaviour:
   - Resource: {fileID: 114095637835361528, guid: 5aee6980d56874648a1d30f098502f19,
       type: 2}
     Message: Failed by A
+    AchievementMessage: Failed by A Achieve
   - Resource: {fileID: 114095637835361528, guid: b84c03b94af7c472eb3217c6985be720,
       type: 2}
     Message: Failed by B
+    AchievementMessage: Failed by B Achieve
   - Resource: {fileID: 114095637835361528, guid: 819b2432bf0254652b4a55fb690fd975,
       type: 2}
     Message: Failed by C
+    AchievementMessage: Failed by C Achieve
