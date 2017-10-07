@@ -174,10 +174,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Entertainment
   Changes:
-  - Resource: {fileID: 114095637835361528, guid: 819b2432bf0254652b4a55fb690fd975,
+  - Resource: {fileID: 114095637835361528, guid: 5aee6980d56874648a1d30f098502f19,
       type: 2}
     Value: 1
-  - Resource: {fileID: 114095637835361528, guid: 5aee6980d56874648a1d30f098502f19,
+  - Resource: {fileID: 114095637835361528, guid: d09a6359e11b18a45b0e00f13d6e87e6,
       type: 2}
     Value: -1
   Level: 0

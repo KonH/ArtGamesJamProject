@@ -55,11 +55,15 @@ MonoBehaviour:
   Cases:
   - Resources: []
     Regions:
-    - Name: Entertainment
+    - Name: Authority
+      UpDown: 1
+    - Name: Industry
       UpDown: 0
   - Resources: []
     Regions:
-    - Name: Finance
+    - Name: Authority
+      UpDown: 0
+    - Name: Industry
       UpDown: 1
   EventDepend: {fileID: 0}
   CaseDepend: 0

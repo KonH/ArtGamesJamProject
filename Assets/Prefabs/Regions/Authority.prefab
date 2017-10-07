@@ -93,7 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Authority
   Changes:
-  - Resource: {fileID: 114095637835361528, guid: 5aee6980d56874648a1d30f098502f19,
+  - Resource: {fileID: 114095637835361528, guid: d09a6359e11b18a45b0e00f13d6e87e6,
       type: 2}
     Value: 1
   - Resource: {fileID: 114095637835361528, guid: b84c03b94af7c472eb3217c6985be720,

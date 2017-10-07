@@ -57,9 +57,15 @@ MonoBehaviour:
     Regions:
     - Name: Ecology
       UpDown: 1
+    - Name: Finance
+      UpDown: 0
   - Resources: []
     Regions:
-    - Name: Industry
+    - Name: Authority
+      UpDown: 1
+    - Name: Ecology
       UpDown: 0
+    - Name: Industry
+      UpDown: 1
   EventDepend: {fileID: 0}
   CaseDepend: 0

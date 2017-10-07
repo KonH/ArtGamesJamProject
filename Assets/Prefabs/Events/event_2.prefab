@@ -57,9 +57,15 @@ MonoBehaviour:
     Regions:
     - Name: Authority
       UpDown: 0
-  - Resources: []
-    Regions:
+    - Name: Entertainment
+      UpDown: 1
     - Name: Finance
       UpDown: 1
+  - Resources: []
+    Regions:
+    - Name: Authority
+      UpDown: 1
+    - Name: Entertainment
+      UpDown: 0
   EventDepend: {fileID: 0}
   CaseDepend: 0
