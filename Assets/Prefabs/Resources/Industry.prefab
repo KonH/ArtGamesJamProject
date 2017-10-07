@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4458923362329684}
   - component: {fileID: 114095637835361528}
   m_Layer: 0
-  m_Name: ResourceB
+  m_Name: Industry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,4 +51,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44fc817d8d055414fb073cb73aae51fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: B
+  Name: Industry
