@@ -1104,6 +1104,7 @@ GameObject:
   - component: {fileID: 1093418357}
   - component: {fileID: 1093418359}
   - component: {fileID: 1093418358}
+  - component: {fileID: 1093418360}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -1258,6 +1259,17 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1093418360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1093418351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5fbebdd7383e4389a61eaeeee0da3a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1098106185
 GameObject:
   m_ObjectHideFlags: 0
