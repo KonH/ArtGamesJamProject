@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57dbf49d68844741a4b81fb801dd949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Index: 2
   Message: What do you want? (depend)
   Cases:
   - Message: +B

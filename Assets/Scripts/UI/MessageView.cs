@@ -91,10 +91,10 @@ public class MessageView : MonoBehaviour {
 		var cases = new List<CaseSetup>();
 		foreach ( var cs in ev.Cases ) {
 			var selection = cs;
-			var action = WrapSelect(cs.ResultMessage, () => Events.Fire(new User_Case(ev, selection)));
-			cases.Add(new CaseSetup(cs.Message, action));
+			var action = WrapSelect(ev.ConvertResult(ev.Cases.IndexOf(cs)), () => Events.Fire(new User_Case(ev, selection)));
+			cases.Add(new CaseSetup(ev.ConvertCase(ev.Cases.IndexOf(cs)), action));
 		}
-		SetMessage(ev.Message, cases, false);
+		SetMessage(ev.ConvertMessage(), cases, false);
 	}
 
 	Action WrapSelect(string message, Action action) {

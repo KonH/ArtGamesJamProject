@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UDBase.Controllers.SaveSystem;
 using UDBase.Controllers.ConfigSystem;
+using UDBase.Controllers.LogSystem;
 
 public static class Localization {
 	public static string Localize(string key) {
+		Log.MessageFormat("Localize: '{0}'", LogTags.State, key);
 		var save = Save.GetNode<GameSave>();
 		var textConfig = Config.GetNode<TextConfig>();
 		var collection = save.IsRussian ? textConfig.ValuesRu : textConfig.ValuesEn;
