@@ -6,6 +6,8 @@ using UDBase.Controllers.LogSystem;
 using UDBase.Controllers.SceneSystem;
 using UDBase.Controllers.EventSystem;
 using UDBase.Controllers.SaveSystem;
+using UDBase.Controllers.UserSystem;
+using UDBase.Controllers.LeaderboardSystem;
 
 public class ProjectScheme : Scheme {
 
@@ -16,6 +18,10 @@ public class ProjectScheme : Scheme {
 		var save = new FsJsonDataSave();
 		AddController(new Save(), save);
 		save.AddNode<GameSave>("game_save");
+		save.AddNode<UserSaveNode>("user");
+		AddController<User>(new SaveUser());
+		AddController<Leaderboard>(
+			new WebLeaderboard("https://konhit.xyz/lbservice/", "cityBuilder", "1.0.0", "cityBuilder", "cityBuilder"));
 	}
 }
 #endif

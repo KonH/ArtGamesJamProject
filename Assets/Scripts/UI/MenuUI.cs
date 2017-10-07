@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UDBase.Controllers.SceneSystem;
 using UDBase.Controllers.SaveSystem;
+using UDBase.Controllers.UserSystem;
 
 public class MenuUI : MonoBehaviour {
 	public Text BestResult;
@@ -18,11 +19,15 @@ public class MenuUI : MonoBehaviour {
 	}
 
 	public void OnPlay() {
-		Scene.LoadSceneByName("Game");
+		if ( string.IsNullOrEmpty(User.Name) ) {
+			Scene.LoadSceneByName("Login");
+		} else {
+			Scene.LoadSceneByName("Game");
+		}
 	}
 
 	public void OnLeaderboards() {
-		// TODO
+		Scene.LoadSceneByName("Leaderboards");
 	}
 
 	public void OnCredits() {

@@ -5,6 +5,8 @@ using UnityEngine;
 using UDBase.Controllers.EventSystem;
 using UDBase.Controllers.SceneSystem;
 using UDBase.Controllers.SaveSystem;
+using UDBase.Controllers.LeaderboardSystem;
+using UDBase.Controllers.UserSystem;
 using UDBase.Utils;
 
 public class GameState : MonoBehaviour {
@@ -138,6 +140,9 @@ public class GameState : MonoBehaviour {
 
 	void SaveResult(int turn) {
 		var save = Save.GetNode<GameSave>();
+		if ( turn > save.BestResult ) {
+			Leaderboard.PostScore("", User.Name, turn, (_) => {});
+		}
 		save.BestResult = Math.Max(save.BestResult, turn);
 		Save.SaveNode(save);
 	}
