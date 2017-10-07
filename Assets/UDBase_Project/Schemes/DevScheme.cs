@@ -9,6 +9,7 @@ using UDBase.Controllers.SaveSystem;
 using UDBase.Controllers.UserSystem;
 using UDBase.Controllers.LeaderboardSystem;
 using UDBase.Controllers.ContentSystem;
+using UDBase.Controllers.AudioSystem;
 using UDBase.Controllers.SoundSystem;
 using UDBase.Controllers.MusicSystem;
 using UDBase.Controllers.ConfigSystem;
@@ -28,6 +29,7 @@ public class ProjectScheme : Scheme {
 		AddController<Leaderboard>(
 			new WebLeaderboard("https://konhit.xyz/lbservice/", "cityBuilder", "1.0.0", "cityBuilder", "cityBuilder"));
 		AddController<Content>(new DirectContentController());
+		AddController<Audio>(new AudioController("AudioMixer"));
 		AddController<Sound>(new SoundController());
 		AddController<Music>(new MusicController());
 		var config = new FsJsonResourcesConfig();

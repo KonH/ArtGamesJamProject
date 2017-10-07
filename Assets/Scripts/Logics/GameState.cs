@@ -9,7 +9,7 @@ using UDBase.Controllers.SaveSystem;
 using UDBase.Controllers.LeaderboardSystem;
 using UDBase.Controllers.UserSystem;
 using UDBase.Controllers.LogSystem;
-using UDBase.Controllers.MusicSystem;
+using UDBase.Controllers.AudioSystem;
 using UDBase.Utils;
 
 public class GameState : MonoBehaviour {
@@ -45,6 +45,7 @@ public class GameState : MonoBehaviour {
 		OnNewTurn();
 		UpdateEvent();
 		Events.Fire(new Game_Start());
+		Audio.UnMuteMusic();
 	}
 
 	void OnUserRestart(User_Restart e) {
@@ -146,6 +147,7 @@ public class GameState : MonoBehaviour {
 		var save = Save.GetNode<GameSave>();
 		var hasEnding = save.Endings.Contains(resource.Name);
 		Events.Fire(new Game_End(resource, !hasEnding));
+		Audio.MuteMusic();
 		SaveResult(Turn);
 		if ( !hasEnding ) {
 			save.Endings.Add(resource.Name);
