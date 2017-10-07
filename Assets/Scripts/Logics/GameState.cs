@@ -167,9 +167,22 @@ public class GameState : MonoBehaviour {
 	Event SelectEvent() {
 		var filterByDepend = GameEvents.Events.Where(e => IsDependSelected(e.EventDepend, e.CaseDepend)).ToList();
 		DebugEvents("FilterByDepend", filterByDepend);
-		var filterByUsage = FilterByUsage(filterByDepend);
+		var filterByApplyable = FilterByApplyable(filterByDepend);
+		DebugEvents("FilterByApplyable", filterByApplyable);
+		var filterByUsage = FilterByUsage(SelectNonEmpty(filterByApplyable, filterByDepend));
 		DebugEvents("FilterByUsage", filterByUsage);
-		return RandomUtils.GetItem(filterByUsage.Count > 0 ? filterByUsage : filterByDepend);
+		var selection = SelectNonEmpty(filterByUsage, filterByApplyable, filterByDepend);
+		DebugEvents("Selection", selection);
+		return RandomUtils.GetItem(selection);
+	}
+
+	List<Event> SelectNonEmpty(params List<Event>[] collections) {
+		foreach ( var col in collections ) {
+			if ( col.Count > 0 ) {
+				return col;
+			}
+		}
+		return null;
 	}
 
 	List<Event> FilterByUsage(List<Event> input) {
@@ -187,6 +200,36 @@ public class GameState : MonoBehaviour {
 			}
 		}
 		return filterByUsage;
+	}
+
+	bool CanLevelDownRegion(string regName) {
+		foreach ( var reg in Regions ) {
+			if ( reg.Name == regName ) {
+				return reg.Level > 0;
+			}
+		}
+		return false;
+	}
+
+	bool CanApplyEvent(Event ev) {
+		foreach ( var cs in ev.Cases ) {
+			foreach ( var reg in cs.Regions ) {
+				if ( !reg.UpDown && !CanLevelDownRegion(reg.Name) ) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	List<Event> FilterByApplyable(List<Event> input) {
+		var filterByApplyable = new List<Event>();
+		foreach ( var ev in input ) {
+			if ( CanApplyEvent(ev) ) {
+				filterByApplyable.Add(ev);
+			}
+		}
+		return filterByApplyable;
 	}
 
 	void DebugEvents(string logName, List<Event> events) {
