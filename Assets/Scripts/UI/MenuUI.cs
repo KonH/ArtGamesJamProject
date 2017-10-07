@@ -31,6 +31,6 @@ public class MenuUI : MonoBehaviour {
 	}
 
 	public void OnCredits() {
-		// TODO
+		Scene.LoadSceneByName("Credits");
 	}
 }
