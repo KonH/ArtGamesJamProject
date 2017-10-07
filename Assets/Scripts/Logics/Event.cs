@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Event : MonoBehaviour {
 	public int Index;
-	public string Message;
 	public List<EventCase> Cases;
 	public Event EventDepend;
 	public int CaseDepend;
