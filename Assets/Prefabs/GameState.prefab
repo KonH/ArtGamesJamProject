@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartCount: 10
-  StartLevel: 1
+  StartLevel: 0
   MaxResource: 20
   Turn: 0
   IsEnded: 0
