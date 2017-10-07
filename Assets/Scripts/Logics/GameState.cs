@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UDBase.Controllers.EventSystem;
 using UDBase.Controllers.SceneSystem;
+using UDBase.Controllers.SaveSystem;
 using UDBase.Utils;
 
 public class GameState : MonoBehaviour {
@@ -123,11 +124,22 @@ public class GameState : MonoBehaviour {
 	bool CheckGameEnd() {
 		foreach ( var holder in Holders ) {
 			if ( holder.Count <= 0 ) {
-				Events.Fire(new Game_End(holder.Resource));
+				OnGameEnd(holder.Resource);
 				return true;
 			}
 		}
 		return false;
+	}
+
+	void OnGameEnd(Resource resource) {
+		Events.Fire(new Game_End(resource));
+		SaveResult(Turn);
+	}
+
+	void SaveResult(int turn) {
+		var save = Save.GetNode<GameSave>();
+		save.BestResult = Math.Max(save.BestResult, turn);
+		Save.SaveNode(save);
 	}
 
 	Event SelectEvent() {

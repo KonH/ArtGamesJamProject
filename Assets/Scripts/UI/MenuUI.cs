@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UDBase.Controllers.SceneSystem;
+using UDBase.Controllers.SaveSystem;
 
 public class MenuUI : MonoBehaviour {
 	public Text BestResult;
@@ -12,7 +13,8 @@ public class MenuUI : MonoBehaviour {
 	}
 
 	void UpdateResult() {
-		// TODO
+		var save = Save.GetNode<GameSave>();
+		BestResult.text = save.BestResult.ToString();
 	}
 
 	public void OnPlay() {
