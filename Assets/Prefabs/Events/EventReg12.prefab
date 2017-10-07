@@ -54,12 +54,16 @@ MonoBehaviour:
   Message: What do you want?
   Cases:
   - Message: +Region1
+    ResultMessage: Result
     Resources: []
     Regions:
     - Name: Region1
       UpDown: 1
   - Message: -Region2
+    ResultMessage: Result
     Resources: []
     Regions:
     - Name: Region2
       UpDown: 0
+  EventDepend: {fileID: 0}
+  CaseDepend: 0

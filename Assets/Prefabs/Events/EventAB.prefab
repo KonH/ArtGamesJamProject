@@ -54,12 +54,14 @@ MonoBehaviour:
   Message: What do you want?
   Cases:
   - Message: +A
+    ResultMessage: Result
     Resources:
     - Resource: {fileID: 114095637835361528, guid: 5aee6980d56874648a1d30f098502f19,
         type: 2}
       Value: 100
     Regions: []
   - Message: +B
+    ResultMessage: Result
     Resources:
     - Resource: {fileID: 114095637835361528, guid: b84c03b94af7c472eb3217c6985be720,
         type: 2}
