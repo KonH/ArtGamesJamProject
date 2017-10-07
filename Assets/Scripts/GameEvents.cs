@@ -59,3 +59,5 @@ public struct User_Case {
 }
 
 public struct User_Menu {}
+
+public struct Audio_Click {}
