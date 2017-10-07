@@ -14,6 +14,7 @@ using UDBase.Utils;
 
 public class GameState : MonoBehaviour {
 	public int StartCount;
+	public int StartLevel;
 	public int Turn;
 	public bool IsEnded;
 	public ResourceSetup Resources;
@@ -39,6 +40,7 @@ public class GameState : MonoBehaviour {
 	void Start() {
 		InitHolders();
 		InitRegions();
+		RecalculateResources();
 		OnNewTurn();
 		UpdateEvent();
 		Events.Fire(new Game_Start());
@@ -225,7 +227,7 @@ public class GameState : MonoBehaviour {
 
 	void InitRegions() {
 		foreach ( var region in Regions ) {
-			region.UpdateLevel(0);
+			region.UpdateLevel(StartLevel);
 		}
 	}
 }
