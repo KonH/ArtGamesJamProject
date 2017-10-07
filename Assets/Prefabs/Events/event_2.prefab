@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4621181147425538}
   - component: {fileID: 114469792546644324}
   m_Layer: 0
-  m_Name: "Event\u0412COnlyB"
+  m_Name: event_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,22 +52,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Index: 2
-  Message: What do you want? (depend)
   Cases:
-  - Message: +B
-    ResultMessage: Result
-    Resources:
-    - Resource: {fileID: 114095637835361528, guid: 5aee6980d56874648a1d30f098502f19,
-        type: 2}
-      Value: 100
-    Regions: []
-  - Message: -C
-    ResultMessage: Result
-    Resources:
-    - Resource: {fileID: 114095637835361528, guid: b84c03b94af7c472eb3217c6985be720,
-        type: 2}
-      Value: -10
-    Regions: []
-  EventDepend: {fileID: 114469792546644324, guid: a2f2565fb8e8244d48f62e64368acd70,
-    type: 2}
-  CaseDepend: 1
+  - Resources: []
+    Regions:
+    - Name: Authority
+      UpDown: 0
+  - Resources: []
+    Regions:
+    - Name: Finance
+      UpDown: 1
+  EventDepend: {fileID: 0}
+  CaseDepend: 0

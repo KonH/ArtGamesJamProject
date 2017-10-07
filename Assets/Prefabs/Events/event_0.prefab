@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4621181147425538}
   - component: {fileID: 114469792546644324}
   m_Layer: 0
-  m_Name: EventAB
+  m_Name: event_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,21 +51,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57dbf49d68844741a4b81fb801dd949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Message: What do you want?
+  Index: 0
   Cases:
-  - Message: -A
-    ResultMessage: Result
-    Resources:
-    - Resource: {fileID: 114095637835361528, guid: 5aee6980d56874648a1d30f098502f19,
-        type: 2}
-      Value: -5
-    Regions: []
-  - Message: -B
-    ResultMessage: Result
-    Resources:
-    - Resource: {fileID: 114095637835361528, guid: b84c03b94af7c472eb3217c6985be720,
-        type: 2}
-      Value: -5
-    Regions: []
+  - Resources: []
+    Regions:
+    - Name: Ecology
+      UpDown: 1
+  - Resources: []
+    Regions:
+    - Name: Industry
+      UpDown: 0
   EventDepend: {fileID: 0}
   CaseDepend: 0

@@ -5,14 +5,44 @@
 			"button_leaders": "Топ игроков",
 			"button_credits": "Авторы",
 			"button_restart": "Перезапуск",
-			"button_menu": "Меню"
+			"button_menu": "Меню",
+			"event_0":"Пожар в парке!",
+			"event_0_q0":"Потратить деньги на тушение/восстановление",
+			"event_0_a0":"Деньги потрачены, парк снова радует жителей.",
+			"event_0_q1":"Нечего гулять в парках, пусть работают!",
+			"event_0_a1":"Вы показали населению, что дисциплина и эффективность для вас важнее, чем возможности для отдыха. Пусть все работают так же упорно, как вы!",
+			"event_1":"Рабочие вышли на митинг",
+			"event_1_q0":"Разогнать",
+			"event_1_a0":"Порядок восстановлен!",
+			"event_1_q1":"Выслушать их требования",
+			"event_1_a1":"Может вас, конечно, и считают тряпкой за излишнюю снисходительность к бунтарям, но требования рабочих были разумными и помогли улучшить условия труда на фабрике.",
+			"event_2":"В квартале развлечений открылось новое заведение! Кажется, там предоставляют услуги непристойного характера!",
+			"event_2_q0":"Пускай развлекаются",
+			"event_2_a0":"Все считают, что вы закрываете глаза на аморальные вещи. Зато народу весело. Пускай развлекается.",
+			"event_2_q1":"Разогнать",
+			"event_2_a1":"Такие развлечения подрывают устои общества!"
 		},
 		"values_en": {
 			"button_play": "Play",
 			"button_leaders": "Leaderboards",
 			"button_credits": "Credits",
 			"button_restart": "Restart",
-			"button_menu": "Menu"
+			"button_menu": "Menu",
+			"event_0":"Fire at the park!",
+			"event_0_q0":"Spend money on firefighting/restorations",
+			"event_0_a0":"The money has been spent. The park's making citizens happy again.",
+			"event_0_q1":"They shouldn't walk instead of working",
+			"event_0_a1":"You've demonstrated that discipline and efficiency are more important to you than the resting opportunities. Everyone should be working as hard as you do!",
+			"event_1":"The workers are rioting",
+			"event_1_q0":"Disperse",
+			"event_1_a0":"Order has been restored!",
+			"event_1_q1":"Hear them out",
+			"event_1_a1":"Perhaps some might consider you a weakling for your clemency towards the rioters but their demands were reasonable and helpful for improving the working conditions at the factory.",
+			"event_2":"There's a new establishment in the entertainment block. Apparently they're offerring red-light services!",
+			"event_2_q0":"Let them have a good time",
+			"event_2_a0":"You are believed to be closing your eyes on immoral notions. The people are having fun though.",
+			"event_2_q1":"Disperse",
+			"event_2_a1":"Such enterntainment is intolerable in our society!"
 		}
 	}
 }

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4621181147425538}
   - component: {fileID: 114469792546644324}
   m_Layer: 0
-  m_Name: EventReg12
+  m_Name: event_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,19 +52,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Index: 1
-  Message: What do you want?
   Cases:
-  - Message: +Region1
-    ResultMessage: Result
-    Resources: []
+  - Resources: []
     Regions:
-    - Name: Region1
-      UpDown: 1
-  - Message: -Region2
-    ResultMessage: Result
-    Resources: []
-    Regions:
-    - Name: Region2
+    - Name: Entertainment
       UpDown: 0
+  - Resources: []
+    Regions:
+    - Name: Finance
+      UpDown: 1
   EventDepend: {fileID: 0}
   CaseDepend: 0
