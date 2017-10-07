@@ -21,13 +21,10 @@ public class MessageView : MonoBehaviour {
 	public GameEndMessageSetup EndSetup;
 	public Text Text;
 	public List<CaseControl> Cases;
-	public float MinDelay;
-	public float Delay;
 
 	List<CaseSetup> _emptyCases = new List<CaseSetup>();
-	bool _autoComplete;
-	Queue<Action> _delayActions = new Queue<Action>();
-	float _delay;
+	bool _skipable;
+	Queue<Action> _queuedActions = new Queue<Action>();
 
 	void Awake() {
 		Events.Subscribe<Game_End>(this, OnGameEnd);
@@ -35,22 +32,14 @@ public class MessageView : MonoBehaviour {
 		ClearMessage();
 	}
 
-	void Update() {
-		if ( _autoComplete ) {
-			var force = Input.anyKey;
-			if ( ( _delay > Delay ) || ( force && (_delay > MinDelay) ) ) {
-				if ( _delayActions.Count > 0 ) {
-					var action = _delayActions.Dequeue();
-					Log.Message("ExecAutoComplete", LogTags.State);
-					action();
-					if ( _delayActions.Count == 0 ) {
-						_autoComplete = false;
-						Log.Message("ResetAutoComplete", LogTags.State);
-					}
-					_delay = 0.0f;
-				}
-			} else {
-				_delay += Time.deltaTime;
+	void Next() {
+		if ( _queuedActions.Count > 0 ) {
+			var action = _queuedActions.Dequeue();
+			Log.Message("ExecContinue", LogTags.State);
+			action();
+			if ( _queuedActions.Count == 0 ) {
+				_skipable = false;
+				Log.Message("ResetContinue", LogTags.State);
 			}
 		}
 	}
@@ -70,7 +59,7 @@ public class MessageView : MonoBehaviour {
 				if ( e.FirstTime ) {
 					var achieveMessage = endMessage.AchievementMessage;
 					SetMessage(endMessage.Message, _emptyCases, true);
-					_delayActions.Enqueue(() => RaiseEndGameMessage(achieveMessage));
+					_queuedActions.Enqueue(() => RaiseEndGameMessage(achieveMessage));
 				} else {
 					RaiseEndGameMessage(endMessage.Message);
 				}
@@ -102,22 +91,25 @@ public class MessageView : MonoBehaviour {
 			ClearMessage();
 			if ( !string.IsNullOrEmpty(message) ) {
 				SetMessage(message, _emptyCases, true);
-				_delayActions.Enqueue(action);
+				_queuedActions.Enqueue(action);
 			} else {
 				action();
 			}
 		};
 	}
 
-	void SetMessage(string text, List<CaseSetup> cases, bool autoComplete) {
-		Log.MessageFormat("SetMessage: '{0}', {1}, auto: {2}", LogTags.State, text, cases.Count, autoComplete);
-		if ( !autoComplete && _autoComplete && ( _delayActions.Count > 0 ) ) {
+	void SetMessage(string text, List<CaseSetup> cases, bool skipable) {
+		Log.MessageFormat("SetMessage: '{0}', {1}, skipable: {2}", LogTags.State, text, cases.Count, skipable);
+		if ( !skipable && _skipable && ( _queuedActions.Count > 0 ) ) {
 			Log.Message("Enque message", LogTags.State);
-			_delayActions.Enqueue(() => SetMessage(text, cases, autoComplete));
+			_queuedActions.Enqueue(() => SetMessage(text, cases, skipable));
 			return;
 		}
-		_delay = 0.0f;
-		_autoComplete = autoComplete;
+		_skipable = skipable;
+		if ( _skipable ) {
+			cases = new List<CaseSetup>();
+			cases.Add(new CaseSetup("button_next", () => Next()));
+		}
 		Text.text = Localization.Localize(text);
 		for ( var i = 0; i < Cases.Count; i++ ) {
 			Cases[i].gameObject.SetActive(i < cases.Count);
