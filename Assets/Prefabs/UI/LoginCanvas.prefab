@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224716616866957500}
   - component: {fileID: 222814651033934622}
   - component: {fileID: 114081701032845110}
+  - component: {fileID: 114957379922309414}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -56,6 +57,7 @@ GameObject:
   - component: {fileID: 224052975533412144}
   - component: {fileID: 222405943687497640}
   - component: {fileID: 114229889861231378}
+  - component: {fileID: 114551137499163516}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -90,6 +92,7 @@ GameObject:
   - component: {fileID: 224485601052195816}
   - component: {fileID: 222253711217307940}
   - component: {fileID: 114925502877228604}
+  - component: {fileID: 114092310501279360}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -202,6 +205,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Enter text...
+--- !u!114 &114092310501279360
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1190561183659842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b05b46f767c8450dbbccf28ddb7f8d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Key: button_go
 --- !u!114 &114229889861231378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -444,6 +459,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Field: {fileID: 114479183541049080}
   GoButton: {fileID: 114253998385253296}
+--- !u!114 &114551137499163516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1144284716354398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b05b46f767c8450dbbccf28ddb7f8d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Key: login_message
 --- !u!114 &114744057630937284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -525,6 +552,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Go
+--- !u!114 &114957379922309414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1101988955022282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b05b46f767c8450dbbccf28ddb7f8d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Key: place_name
 --- !u!114 &114977977327362456
 MonoBehaviour:
   m_ObjectHideFlags: 1

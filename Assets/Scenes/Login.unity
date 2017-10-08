@@ -247,99 +247,14 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224052975533412144, guid: 90e47a79aeb5b47d6b65340d40fc4ed0,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224052975533412144, guid: 90e47a79aeb5b47d6b65340d40fc4ed0,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224052975533412144, guid: 90e47a79aeb5b47d6b65340d40fc4ed0,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 224052975533412144, guid: 90e47a79aeb5b47d6b65340d40fc4ed0,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224052975533412144, guid: 90e47a79aeb5b47d6b65340d40fc4ed0,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 224052975533412144, guid: 90e47a79aeb5b47d6b65340d40fc4ed0,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224033664322249354, guid: 90e47a79aeb5b47d6b65340d40fc4ed0,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224033664322249354, guid: 90e47a79aeb5b47d6b65340d40fc4ed0,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224033664322249354, guid: 90e47a79aeb5b47d6b65340d40fc4ed0,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 224033664322249354, guid: 90e47a79aeb5b47d6b65340d40fc4ed0,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224033664322249354, guid: 90e47a79aeb5b47d6b65340d40fc4ed0,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 224033664322249354, guid: 90e47a79aeb5b47d6b65340d40fc4ed0,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224235426893056664, guid: 90e47a79aeb5b47d6b65340d40fc4ed0,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224235426893056664, guid: 90e47a79aeb5b47d6b65340d40fc4ed0,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224235426893056664, guid: 90e47a79aeb5b47d6b65340d40fc4ed0,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 224235426893056664, guid: 90e47a79aeb5b47d6b65340d40fc4ed0,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224235426893056664, guid: 90e47a79aeb5b47d6b65340d40fc4ed0,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 224235426893056664, guid: 90e47a79aeb5b47d6b65340d40fc4ed0,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90e47a79aeb5b47d6b65340d40fc4ed0, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &722395315 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1953674909671780, guid: 90e47a79aeb5b47d6b65340d40fc4ed0,
+    type: 2}
+  m_PrefabInternal: {fileID: 722395314}
 --- !u!1 &1793418841
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,7 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 722395315}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &2033103847
