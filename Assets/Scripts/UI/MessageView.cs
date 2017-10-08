@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UDBase.Controllers.EventSystem;
 using UDBase.Controllers.LogSystem;
+using DG.Tweening;
 
 public class MessageView : MonoBehaviour {
 	
@@ -21,10 +22,14 @@ public class MessageView : MonoBehaviour {
 	public GameEndMessageSetup EndSetup;
 	public Text Text;
 	public List<CaseControl> Cases;
+	public Transform MessageRoot;
+	public Transform CasesRoot;
+	public float ScaleTime;
 
 	List<CaseSetup> _emptyCases = new List<CaseSetup>();
 	bool _skipable;
 	Queue<Action> _queuedActions = new Queue<Action>();
+	Sequence _seq;
 
 	void Awake() {
 		Events.Subscribe<Game_End>(this, OnGameEnd);
@@ -105,6 +110,15 @@ public class MessageView : MonoBehaviour {
 			_queuedActions.Enqueue(() => SetMessage(text, cases, skipable));
 			return;
 		}
+		if ( _seq != null ) {
+			_seq.Kill();
+			_seq = null;
+		}
+		_seq = DOTween.Sequence();
+		MessageRoot.localScale = Vector3.zero;
+		_seq.Append(MessageRoot.DOScale(Vector3.one, ScaleTime));
+		CasesRoot.localScale = Vector3.zero;
+		_seq.Append(CasesRoot.DOScale(Vector3.one, ScaleTime));
 		_skipable = skipable;
 		if ( _skipable ) {
 			cases = new List<CaseSetup>();
