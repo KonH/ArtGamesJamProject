@@ -20,6 +20,14 @@ public class LoginUI : MonoBehaviour {
 		GoButton.interactable = !string.IsNullOrEmpty(name);
 	}
 
+	void Update() {
+		if ( !string.IsNullOrEmpty(Field.text) ) {
+			if ( Input.GetKeyDown(KeyCode.Return) ) {
+				Go();
+			}
+		}
+	}
+
 	void Go() {
 		Scene.LoadSceneByName("Game");
 	}
