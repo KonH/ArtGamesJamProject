@@ -56,19 +56,24 @@ MonoBehaviour:
       type: 2}
     Message: Authority_lose
     AchievementMessage: Authority_achieve
+    Image: {fileID: 21300000, guid: 5cbdac4b2cec9450f932014fb8bf42be, type: 3}
   - Resource: {fileID: 114095637835361528, guid: d762e158793ab304f9d90576ae5c2945,
       type: 2}
     Message: Ecology_lose
     AchievementMessage: Ecology_achieve
+    Image: {fileID: 21300000, guid: 3b9afc0d1a2bf4f66bb6761661f49406, type: 3}
   - Resource: {fileID: 114095637835361528, guid: 5aee6980d56874648a1d30f098502f19,
       type: 2}
     Message: Entertainment_lose
     AchievementMessage: Entertainment_achieve
+    Image: {fileID: 21300000, guid: 9fbee80088f794a1bbf269f116e56a13, type: 3}
   - Resource: {fileID: 114095637835361528, guid: 819b2432bf0254652b4a55fb690fd975,
       type: 2}
     Message: Finance_lose
     AchievementMessage: Finance_achieve
+    Image: {fileID: 21300000, guid: 93e519c59ee0b4a9f8969406c17185cf, type: 3}
   - Resource: {fileID: 114095637835361528, guid: b84c03b94af7c472eb3217c6985be720,
       type: 2}
     Message: Industry_lose
     AchievementMessage: Industry_achieve
+    Image: {fileID: 21300000, guid: a5905ab56fbe24a75bb1af2dfbab117d, type: 3}

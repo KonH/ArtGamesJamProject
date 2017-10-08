@@ -27,6 +27,8 @@ public class MessageView : MonoBehaviour {
 	public Transform CasesRoot;
 	public float ScaleTime;
 	public List<GameObject> Chars;
+	public CanvasGroup EndGameGroup;
+	public Image EndGameImage;
 
 	List<CaseSetup> _emptyCases = new List<CaseSetup>();
 	bool _skipable;
@@ -82,6 +84,8 @@ public class MessageView : MonoBehaviour {
 		SetChar();
 		foreach ( var endMessage in EndSetup.Messages ) {
 			if ( endMessage.Resource == e.Resource ) {
+				EndGameGroup.DOFade(1, 0.5f);
+				EndGameImage.sprite = endMessage.Image;
 				if ( e.FirstTime ) {
 					var achieveMessage = endMessage.AchievementMessage;
 					SetMessage(endMessage.Message, _emptyCases, true);
