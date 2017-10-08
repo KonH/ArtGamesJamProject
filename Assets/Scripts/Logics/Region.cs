@@ -14,7 +14,7 @@ public class Region : MonoBehaviour {
 		Level = level;
 		for ( int i = 0; i < LevelItems.Count; i++ ) {
 			if ( LevelItems[i] ) {
-				LevelItems[i].SetActive(i == Level);
+				LevelItems[i].SetActive(i <= Level);
 			}
 		}
 		if ( Level != prevLevel ) {

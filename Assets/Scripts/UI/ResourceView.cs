@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ResourceView : MonoBehaviour {
 	public ResourceHolder Owner;
 	public Text SampleText;
-	public Slider Slider;
+	public Image Slider;
 
 	int _maxValue;
 
@@ -24,7 +24,7 @@ public class ResourceView : MonoBehaviour {
 				changeValue = holder.Change.ToString();
 			}
 			SampleText.text = string.Format("{0}: {1} {2}", holder.Resource.Name, holder.Count, changeValue);
-			Slider.value = (float)holder.Count / _maxValue;
+			Slider.fillAmount = (float)holder.Count / _maxValue;
 		}
 	}
 }
