@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UDBase.Controllers.EventSystem;
 using UDBase.Controllers.LogSystem;
 using DG.Tweening;
+using UDBase.Utils;
 
 public class MessageView : MonoBehaviour {
 	
@@ -25,16 +26,35 @@ public class MessageView : MonoBehaviour {
 	public Transform MessageRoot;
 	public Transform CasesRoot;
 	public float ScaleTime;
+	public List<GameObject> Chars;
 
 	List<CaseSetup> _emptyCases = new List<CaseSetup>();
 	bool _skipable;
 	Queue<Action> _queuedActions = new Queue<Action>();
 	Sequence _seq;
+	int _prevCharIndex = -1;
 
 	void Awake() {
 		Events.Subscribe<Game_End>(this, OnGameEnd);
 		Events.Subscribe<Event_New>(this, OnNewEvent);
 		ClearMessage();
+		ResetChars();
+	}
+
+	void ResetChars() {
+		foreach ( var ch in Chars ) {
+			ch.SetActive(false);
+		}
+	}
+
+	void SetChar() {
+		ResetChars();
+		var item = Chars[0];
+		do {
+			item = RandomUtils.GetItem(Chars);
+		} while (Chars.IndexOf(item) == _prevCharIndex);
+		item.SetActive(true);
+		_prevCharIndex = Chars.IndexOf(item);
 	}
 
 	void Next() {
@@ -59,6 +79,7 @@ public class MessageView : MonoBehaviour {
 	}
 
 	void OnGameEnd(Game_End e) {
+		SetChar();
 		foreach ( var endMessage in EndSetup.Messages ) {
 			if ( endMessage.Resource == e.Resource ) {
 				if ( e.FirstTime ) {
@@ -81,6 +102,7 @@ public class MessageView : MonoBehaviour {
 	}
 
 	void OnNewEvent(Event_New e) {
+		SetChar();
 		var ev = e.Event;
 		var cases = new List<CaseSetup>();
 		foreach ( var cs in ev.Cases ) {
