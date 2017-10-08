@@ -4,6 +4,7 @@ using UnityEngine;
 using UDBase.Controllers.SaveSystem;
 using UDBase.Controllers.ConfigSystem;
 using UDBase.Controllers.LogSystem;
+using UDBase.Controllers.UserSystem;
 
 public static class Localization {
 	public static string Localize(string key) {
@@ -14,6 +15,9 @@ public static class Localization {
 		var value = "NOT FOUND";
 		if ( collection.ContainsKey(key) ) {
 			value = collection[key];
+			if ( value.Contains("{user}") ) {
+				value = value.Replace("{user}", User.Name);
+			}
 		}
 		return value;
 	}
